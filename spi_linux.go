@@ -22,7 +22,7 @@ uint16_t delay=5;
 int spi_open(const char *device) {
                 int fd = open(device, O_RDWR);
                 int ret;
-
+                printf("open device %d", device)
                 if (fd < 0) {
                                 printf("can't open device");
                                 return -1;
