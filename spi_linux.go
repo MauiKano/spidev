@@ -22,7 +22,6 @@ uint16_t delay=5;
 int spi_open(const char *device) {
                 int fd = open(device, O_RDWR);
                 int ret;
-                printf("open device %d", device)
                 if (fd < 0) {
                                 printf("can't open device");
                                 return -1;
@@ -85,7 +84,7 @@ int spi_xfer(int fd, char* tx, char* rx, int length) {
 */
 import "C"
 import "unsafe"
-
+import "fmt"
 import "errors"
 
 // SPIDevice device
@@ -96,7 +95,7 @@ type SPIDevice struct {
 // NewSPIDevice opens the device
 func NewSPIDevice(devPath string) (*SPIDevice, error) {
 	name := C.CString(devPath)
-        log.Print("open device", device)
+        fmt.Println("open device", device)
 
 	defer C.free(unsafe.Pointer(name))
 	i := C.spi_open(name)
