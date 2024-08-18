@@ -95,7 +95,7 @@ type SPIDevice struct {
 // NewSPIDevice opens the device
 func NewSPIDevice(devPath string) (*SPIDevice, error) {
 	name := C.CString(devPath)
-        fmt.Println("open device", device)
+	fmt.Println("spi_linux: open device\n", device)
 
 	defer C.free(unsafe.Pointer(name))
 	i := C.spi_open(name)
